@@ -32,7 +32,7 @@ for locations in locations:
     #  url = base_url + locations.replace(" ", "+")
     info = soup.select("#wob_dc")[0].getText().strip()
     temperature = soup.select("#wob_tm")[0].getText().strip()
-    celsius = float(temperature)
+    celsius = int(temperature)
     farenheit = celsius * 9/5 + 32
 
     # Print weather information for location
