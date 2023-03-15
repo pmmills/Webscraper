@@ -7,11 +7,6 @@ from datetime import datetime
 locations = ["London","New+York","Bangkok"]
 base_url = "https://www.google.com/search?q=weather+"
 
-#initial variables
-location_name = 'Coventry'
-weather = 'hot'
-celsius = float(99)
-farenheit = float (100)
 
 
 #header used to mimic a browser to pass the info
@@ -32,14 +27,16 @@ for locations in locations:
     # Extract current weather information
     location_name = soup.select("span.BBwThe")[0].getText()
     time = soup.select("#wob_dts")[0].getText().strip()
+
+
+    #  url = base_url + locations.replace(" ", "+")
     info = soup.select("#wob_dc")[0].getText().strip()
     temperature = soup.select("#wob_tm")[0].getText().strip()
-
+    celsius = float(temperature)
     farenheit = celsius * 9/5 + 32
 
     # Print weather information for location
     #print(url)
-
     print(f"Location: {location_name}")
     print(f"Time: {time}")
     print(f"Weather: {info}")
